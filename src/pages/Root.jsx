@@ -2,6 +2,7 @@ import { Form, Link, NavLink, Outlet, useNavigation } from "react-router-dom";
 import Loading from "../components/Loading";
 import { useEffect, useState } from "react";
 import { initFlowbite } from "flowbite";
+import Footer from "../components/Footer";
 
 const Root = () => {
   const [searchWord, setSearchWord] = useState("");
@@ -85,7 +86,7 @@ const Root = () => {
                 id="search-form"
                 role="search"
                 method="get"
-                action={`search/${searchWord}`}
+                action={searchWord === "" ? `` : `search/${searchWord}`}
               >
                 <input
                   type="text"
@@ -151,7 +152,7 @@ const Root = () => {
                 id="search-form"
                 role="search"
                 method="get"
-                action={`search/${searchWord}`}
+                action={searchWord === "" ? `/` : `search/${searchWord}`}
               >
                 <input
                   type="text"
@@ -162,17 +163,12 @@ const Root = () => {
                     setSearchWord(e.target.value);
                   }}
                   value={searchWord}
+                  required
                 />
               </Form>
             </div>
             <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
               <li>
-                {/* <NavLink
-                  to={`/search/${searchWord}`}
-                  className={`block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700`}
-                >
-                  Search
-                </NavLink> */}
                 <NavLink
                   to={`/`}
                   className={({ isActive }) =>
@@ -216,6 +212,8 @@ const Root = () => {
       <div id="content">
         {navigation.state === "loading" ? <Loading /> : <Outlet />}
       </div>
+
+      <Footer />
     </>
   );
 };

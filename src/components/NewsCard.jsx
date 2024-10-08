@@ -1,9 +1,9 @@
-import { Form, Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { addSaved, isAlreadySaved } from "../loader/loader";
 import image from "../assets/default.jpg";
+
 function NewsCard({
   abstract,
-  lead_paragraph,
   headline,
   byline,
   multimedia,
@@ -49,7 +49,7 @@ function NewsCard({
         <Link
           to={web_url}
           target="_blank"
-          className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700"
         >
           Read more
           <svg
@@ -68,16 +68,10 @@ function NewsCard({
             />
           </svg>
         </Link>
-        {/* <a
-          href="#"
-          className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
-          Save
-        </a> */}
 
         <Link
           to={location.pathname + location.search}
-          className={`inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800
+          className={`inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg dark:bg-blue-600 dark:hover:bg-blue-700
               ${
                 isAlreadySaved(_id)
                   ? "bg-red-700 hover:bg-red-800"
@@ -93,59 +87,5 @@ function NewsCard({
     </div>
   );
 }
-
-// function getSavedNews() {
-//   return JSON.parse(localStorage.getItem("savedNews"));
-// }
-
-// function setSavedNews(savedNews) {
-//   localStorage.setItem("savedNews", JSON.stringify(savedNews));
-// }
-
-// function addSaved(event, _id, source, byline, web_url, headline, abstract) {
-//   let savedNews = getSavedNews();
-//   console.log(event.target.innerText);
-//   const btnLabel = event.target.innerText;
-
-//   if (btnLabel === "Save") {
-//     const id = savedNews ? savedNews[savedNews.length - 1].id + 1 : 1;
-//     const payload = {
-//       id,
-//       _id,
-//       source,
-//       byline,
-//       web_url,
-//       headline,
-//       abstract,
-//     };
-//     if (savedNews) {
-//       savedNews.push(payload);
-//     } else {
-//       savedNews = [payload];
-//     }
-
-//     setSavedNews(savedNews);
-//     alert(`Article Saved`);
-//   } else if (btnLabel === "Unsave") {
-//     const upadatedSavedNews = savedNews.filter((e) => e._id !== _id);
-//     setSavedNews(upadatedSavedNews);
-//     if (savedNews.length === 1) {
-//       localStorage.removeItem("savedNews");
-//     }
-//     alert("Article Unsaved");
-//   }
-// }
-
-// function isAlreadySaved(_id) {
-//   let savedNews = getSavedNews();
-//   if (savedNews) {
-//     const article = savedNews.find((article) => article._id === _id);
-//     if (article) {
-//       return true;
-//     }
-//   }
-
-//   return false;
-// }
 
 export default NewsCard;

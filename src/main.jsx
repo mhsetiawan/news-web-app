@@ -6,9 +6,10 @@ import Root from "./pages/Root";
 import ErrorPage from "./ErrorPage";
 import Index from "./pages/Index";
 import Programming from "./pages/Programming";
-import { indexLoader, programmingLoader, searchLoader } from "./loader/loader";
 import Search from "./pages/Search";
 import Saved from "./pages/Saved";
+import { Provider } from "react-redux";
+import store from "./app/store";
 
 const router = createBrowserRouter([
   {
@@ -19,29 +20,27 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Index />,
-        loader: indexLoader,
       },
       {
         path: "programming",
         element: <Programming />,
-        loader: programmingLoader,
       },
       {
         path: "search/:searchQuery",
         element: <Search />,
-        loader: searchLoader,
       },
       {
         path: "saved",
         element: <Saved />,
-        loader: programmingLoader,
       },
     ],
   },
 ]);
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
+  //<StrictMode>
+  <Provider store={store}>
     <RouterProvider router={router} />
-  </StrictMode>
+  </Provider>
+  //</StrictMode>
 );

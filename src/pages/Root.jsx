@@ -3,7 +3,7 @@ import Loading from "../components/Loading";
 import { useEffect, useState } from "react";
 import { initFlowbite } from "flowbite";
 import Footer from "../components/Footer";
-
+import logo from "../assets/app-logo.jpg";
 const Root = () => {
   const [searchWord, setSearchWord] = useState("");
   const navigation = useNavigation();
@@ -14,16 +14,12 @@ const Root = () => {
   return (
     <>
       <nav className="bg-white border-gray-200 dark:bg-gray-900 shadow-md rounded-lg">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <div className="container mx-auto flex flex-wrap items-center justify-between p-4">
           <Link
             to="/"
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
-            <img
-              src="https://flowbite.com/docs/images/logo.svg"
-              className="h-8"
-              alt="Logo"
-            />
+            <img src={logo} className="h-8" alt="Logo" />
             <span className="self-center text-2xl font-bold whitespace-nowrap dark:text-white">
               Global News
             </span>

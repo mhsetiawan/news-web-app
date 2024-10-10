@@ -195,11 +195,13 @@ const Root = () => {
         </div>
       </nav>
 
-      <div className="h-[calc(100vh-6rem)]">
+      <div className="min-h-[calc(100vh-9rem)]">
         {navigation.state === "loading" ? <Loading /> : <Outlet />}
       </div>
 
-      <Footer />
+      <div>
+        <Footer />
+      </div>
     </>
   );
 };

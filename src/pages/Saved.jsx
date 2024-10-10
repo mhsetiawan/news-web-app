@@ -5,7 +5,7 @@ function Saved() {
   let savedNews = getSavedNews();
   const location = useLocation();
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 mb-6">
       <h1 className="px-4 py-6 text-3xl font-bold">Saved News</h1>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">

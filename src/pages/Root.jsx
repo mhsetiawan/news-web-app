@@ -195,7 +195,7 @@ const Root = () => {
         </div>
       </nav>
 
-      <div id="content">
+      <div className="h-[calc(100vh-6rem)]">
         {navigation.state === "loading" ? <Loading /> : <Outlet />}
       </div>
 

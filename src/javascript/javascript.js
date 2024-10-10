@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
 // localStorage
 export function getSavedNews() {
   return JSON.parse(localStorage.getItem("savedNews"));
@@ -37,14 +39,20 @@ export function addSaved(
     }
 
     setSavedNews(savedNews);
-    alert(`Article Saved`);
+    Swal.fire({
+      title: "Article Saved",
+      icon: "success",
+    });
   } else if (btnLabel === "Unsave") {
     const upadatedSavedNews = savedNews.filter((e) => e._id !== _id);
     setSavedNews(upadatedSavedNews);
     if (savedNews.length === 1) {
       localStorage.removeItem("savedNews");
     }
-    alert("Article Unsaved");
+    Swal.fire({
+      title: "Article Unsaved",
+      icon: "success",
+    });
   }
 }
 

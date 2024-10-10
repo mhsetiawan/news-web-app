@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { addSaved, isAlreadySaved } from "../loader/loader";
+import { addSaved, isAlreadySaved } from "../javascript/javascript";
 import image from "../assets/default.jpg";
 
 function NewsCard({
